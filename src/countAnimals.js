@@ -7,7 +7,8 @@ function countAnimals(animal) {
     animalCount[specie.name] = specie.residents.length;
   });
 
-  return animalCount;
+  if (!animal) return animalCount;
+  if (animal.specie) return animalCount[animal.specie];
 }
 
 countAnimals({ specie: 'giraffes', sex: 'female' });
