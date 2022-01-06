@@ -6,6 +6,8 @@ function countAllAnimals() {
   data.species.forEach((specie) => {
     animalCount[specie.name] = specie.residents.length;
   });
+
+  return animalCount;
 }
 
 function countAnimals(animal) {
