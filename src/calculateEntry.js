@@ -1,7 +1,22 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  // seu código aqui
+  const ages = {
+    child: 0,
+    adult: 0,
+    senior: 0 };
+
+  entrants.forEach((person) => {
+    if (person.age < 18) {
+      ages.child += 1;
+    } else if (person.age >= 50) {
+      ages.senior += 1;
+    } else {
+      ages.adult += 1;
+    }
+  });
+
+  return ages;
 }
 
 function calculateEntry(entrants) {
