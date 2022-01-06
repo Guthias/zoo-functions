@@ -11,12 +11,12 @@ function countAllAnimals() {
 function countAnimals(animal) {
   if (!animal) return countAllAnimals();
 
-  const animalFromSpecie = data.species.find((specie) => specie.name === animal.specie);
+  const animalFromSpecie = data.species.find((specie) => specie.name === animal.specie).residents;
   // if (animal.species && animal.sex) {
   //   return animalFromSpecie.residents.filter((resident) => resident.sex === animal.sex).length;
   // }
 
-  return animalFromSpecie.residents.length;
+  return animalFromSpecie.length;
 }
 
 console.log(countAnimals({ specie: 'giraffes', sex: 'female' }));
