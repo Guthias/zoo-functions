@@ -20,7 +20,11 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  const guests = countEntrants(entrants);
+
+  return (guests.child * data.prices.child)
+    + (guests.adult * data.prices.adult)
+    + (guests.senior * data.prices.senior);
 }
 
 module.exports = { calculateEntry, countEntrants };
