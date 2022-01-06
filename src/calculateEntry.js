@@ -19,12 +19,15 @@ function countEntrants(entrants) {
   return ages;
 }
 
-function calculateEntry(entrants) {
+function calculateEntry(entrants = {}) {
+  if (Object.keys(entrants).length === 0) return 0;
   const guests = countEntrants(entrants);
 
   return (guests.child * data.prices.child)
     + (guests.adult * data.prices.adult)
     + (guests.senior * data.prices.senior);
 }
+
+console.log(calculateEntry());
 
 module.exports = { calculateEntry, countEntrants };
