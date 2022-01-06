@@ -1,8 +1,8 @@
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(ids) {
+function getSpeciesByIds(...ids) {
   const species = [];
-  species.push(data.species.find((specie) => specie.id === ids));
+  ids.forEach((id) => species.push(data.species.find((specie) => specie.id === id)));
   return species;
 }
 
