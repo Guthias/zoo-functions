@@ -2,7 +2,7 @@ const { employees, species } = require('../data/zoo_data');
 
 function findWorker(id) {
   return employees.find((employee) => employee.id === id
-    || employee.name === id
+    || employee.firstName === id
     || employee.lastName === id);
 }
 
