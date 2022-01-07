@@ -15,6 +15,14 @@ const exhibition = (weekDay) => {
   return (exhibitionAnimals.length) ? exhibitionAnimals : 'The zoo will be closed!';
 };
 
+const daySchedule = (weekDay) => {
+  const schedule = {};
+  schedule[weekDay] = {
+    officeHour: openTime(hours[weekDay].open, hours[weekDay].close),
+    exhibition: exhibition(weekDay) };
+  return schedule;
+};
+
 function fullSchedule() {
   const schedule = {};
   Object.keys(hours).forEach((weekDay) => {
@@ -27,6 +35,10 @@ function fullSchedule() {
 }
 
 function getSchedule(scheduleTarget) {
+  if (Object.keys(hours).includes(scheduleTarget)) {
+    return daySchedule(scheduleTarget);
+  }
+
   return fullSchedule();
 }
 
