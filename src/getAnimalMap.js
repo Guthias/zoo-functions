@@ -15,7 +15,7 @@ const allAnimals = () => {
 };
 
 // eslint-disable-next-line max-lines-per-function
-const animalsIncludeNames = (sex) => {
+const animalsIncludeNames = (sex = undefined, sorted = false) => {
   const animalMap = {
     NE: [],
     NW: [],
@@ -32,10 +32,11 @@ const animalsIncludeNames = (sex) => {
           animalNames.push(resident.name);
         }
       } else {
-          animalNames.push(resident.name);
+        animalNames.push(resident.name);
       }
     });
 
+    if (sorted) animalNames = animalNames.sort();
     animalMap[specie.location].push({ [specie.name]: animalNames });
   });
 
@@ -45,11 +46,14 @@ const animalsIncludeNames = (sex) => {
 function getAnimalMap(options = {}) {
   if (options.includeNames) {
     if (options.sex) {
-      return animalsIncludeNames(options.sex);
+      return animalsIncludeNames(options.sex, options.sorted);
+    } if (options.sorted) {
+      return animalsIncludeNames(options.sex, options.sorted);
     }
+
     return animalsIncludeNames();
   }
   return allAnimals();
 }
-console.log(getAnimalMap());
+
 module.exports = getAnimalMap;
