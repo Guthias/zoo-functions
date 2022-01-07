@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+const { hours } = require('../data/zoo_data');
 
 const openTime = (open, close) => {
   if (open === 0) return 'CLOSED';
@@ -16,9 +17,9 @@ const exhibition = (weekDay) => {
 
 function fullSchedule() {
   const schedule = {};
-  Object.keys(data.hours).forEach((weekDay) => {
+  Object.keys(hours).forEach((weekDay) => {
     schedule[weekDay] = {
-      officeHour: openTime(weekDay.open, weekDay.close),
+      officeHour: openTime(hours[weekDay].open, hours[weekDay].close),
       exhibition: exhibition(weekDay) };
   });
 
