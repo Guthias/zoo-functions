@@ -1,4 +1,4 @@
-const { employees } = require('../data/zoo_data');
+const { employees, species } = require('../data/zoo_data');
 
 function findWorker(id) {
   return employees.find((employee) => employee.id === id
@@ -6,9 +6,10 @@ function findWorker(id) {
     || employee.lastName === id);
 }
 
-const getSpecies = () => {
-
-};
+const getSpecies = (specieIDs) => specieIDs.reduce((acc, specieID) => {
+  acc.push(species.find((animal) => animal.id === specieID).name);
+  return acc;
+}, []);
 
 const getLocation = () => {
 
@@ -20,7 +21,7 @@ function getEmployeesCoverage(employeID) {
   return {
     id: worker.id,
     name: `${worker.firstName} ${worker.lastName}`,
-    species: getSpecies(),
+    species: getSpecies(worker.responsibleFor),
     location: getLocation() };
 }
 
