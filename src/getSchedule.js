@@ -6,7 +6,12 @@ const openTime = (open, close) => {
 };
 
 const exhibition = (weekDay) => {
+  const exhibitionAnimals = data.species.reduce((acumulator, specie) => {
+    if (specie.availability.includes(weekDay)) acumulator.push(specie.name);
+    return acumulator;
+  }, []);
 
+  return (exhibitionAnimals.length) ? exhibitionAnimals : 'The zoo will be closed!';
 };
 
 function fullSchedule() {
