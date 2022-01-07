@@ -14,6 +14,7 @@ const allAnimals = () => {
   return animalMap;
 };
 
+// eslint-disable-next-line max-lines-per-function
 const animalsIncludeNames = () => {
   const animalMap = {
     NE: [],
@@ -21,8 +22,15 @@ const animalsIncludeNames = () => {
     SE: [],
     SW: [] };
 
-  species.forEach((animal) => {
-    animalMap[animal.location].push({ [animal.name]: [] });
+  let animalNames;
+  species.forEach((specie) => {
+    animalNames = [];
+
+    specie.residents.forEach((resident) => {
+      animalNames.push(resident.name);
+    });
+
+    animalMap[specie.location].push({ [specie.name]: animalNames });
   });
 
   return animalMap;
