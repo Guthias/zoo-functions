@@ -16,14 +16,16 @@ const getLocation = (specieIDs) => specieIDs.reduce((acc, specieID) => {
   return acc;
 }, []);
 
-function getEmployeesCoverage(employeID) {
+const employeeInfo = (worker) => ({
+  id: worker.id,
+  fullName: `${worker.firstName} ${worker.lastName}`,
+  species: getSpecies(worker.responsibleFor),
+  locations: getLocation(worker.responsibleFor) });
+
+function getEmployeesCoverage(employeID = null) {
   const worker = findWorker(employeID[Object.keys(employeID)[0]]);
 
-  return {
-    id: worker.id,
-    fullName: `${worker.firstName} ${worker.lastName}`,
-    species: getSpecies(worker.responsibleFor),
-    locations: getLocation(worker.responsibleFor) };
+  return employeeInfo(worker);
 }
 
 // console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
