@@ -6,8 +6,22 @@ function findWorker(id) {
     || employee.lastName === id);
 }
 
+const getSpecies = () => {
+
+};
+
+const getLocation = () => {
+
+};
+
 function getEmployeesCoverage(employeID) {
-  return findWorker(employeID[Object.keys(employeID)[0]]);
+  const worker = findWorker(employeID[Object.keys(employeID)[0]]);
+
+  return {
+    id: worker.id,
+    name: `${worker.firstName} ${worker.lastName}`,
+    species: getSpecies(),
+    location: getLocation() };
 }
 
 console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
