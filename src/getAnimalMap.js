@@ -15,7 +15,7 @@ const allAnimals = () => {
 };
 
 // eslint-disable-next-line max-lines-per-function
-const animalsIncludeNames = () => {
+const animalsIncludeNames = (sex) => {
   const animalMap = {
     NE: [],
     NW: [],
@@ -27,7 +27,13 @@ const animalsIncludeNames = () => {
     animalNames = [];
 
     specie.residents.forEach((resident) => {
-      animalNames.push(resident.name);
+      if (sex) {
+        if (resident.sex === sex) {
+          animalNames.push(resident.name);
+        }
+      } else {
+          animalNames.push(resident.name);
+      }
     });
 
     animalMap[specie.location].push({ [specie.name]: animalNames });
@@ -36,9 +42,14 @@ const animalsIncludeNames = () => {
   return animalMap;
 };
 
-function getAnimalMap(options) {
-  return animalsIncludeNames();
-  // return allAnimals();
+function getAnimalMap(options = {}) {
+  if (options.includeNames) {
+    if (options.sex) {
+      return animalsIncludeNames(options.sex);
+    }
+    return animalsIncludeNames();
+  }
+  return allAnimals();
 }
 console.log(getAnimalMap());
 module.exports = getAnimalMap;
