@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-const { hours } = require('../data/zoo_data');
+const { hours, species } = require('../data/zoo_data');
 
 const openTime = (open, close) => {
   if (open === 0) return 'CLOSED';
@@ -37,6 +37,11 @@ function fullSchedule() {
 function getSchedule(scheduleTarget) {
   if (Object.keys(hours).includes(scheduleTarget)) {
     return daySchedule(scheduleTarget);
+  }
+  const animal = species.find((specie) => specie.name === scheduleTarget);
+
+  if (animal) {
+    return animal.availability;
   }
 
   return fullSchedule();
