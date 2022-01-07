@@ -35,15 +35,9 @@ function fullSchedule() {
 }
 
 function getSchedule(scheduleTarget) {
-  if (Object.keys(hours).includes(scheduleTarget)) {
-    return daySchedule(scheduleTarget);
-  }
   const animal = species.find((specie) => specie.name === scheduleTarget);
-
-  if (animal) {
-    return animal.availability;
-  }
-
+  if (animal) return animal.availability;
+  if (Object.keys(hours).includes(scheduleTarget)) return daySchedule(scheduleTarget);
   return fullSchedule();
 }
 
