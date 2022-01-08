@@ -31,6 +31,7 @@ function getEmployeesCoverage(employeID = null) {
   }
 
   const worker = findWorker(employeID[Object.keys(employeID)[0]]);
+  if (!worker) throw new Error('Informações inválidas');
   return employeeInfo(worker);
 }
 
