@@ -23,11 +23,17 @@ const employeeInfo = (worker) => ({
   locations: getLocation(worker.responsibleFor) });
 
 function getEmployeesCoverage(employeID = null) {
-  const worker = findWorker(employeID[Object.keys(employeID)[0]]);
+  if (!employeID) {
+    return employees.reduce((acc, employee) => {
+      acc.push(employeeInfo(employee));
+      return acc;
+    }, []);
+  }
 
+  const worker = findWorker(employeID[Object.keys(employeID)[0]]);
   return employeeInfo(worker);
 }
 
-// console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
+console.log(getEmployeesCoverage());
 
 module.exports = getEmployeesCoverage;
