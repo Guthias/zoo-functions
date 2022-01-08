@@ -35,6 +35,4 @@ function getEmployeesCoverage(employeID = null) {
   return employeeInfo(worker);
 }
 
-console.log(getEmployeesCoverage());
-
 module.exports = getEmployeesCoverage;

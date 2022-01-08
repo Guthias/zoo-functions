@@ -28,6 +28,4 @@ function calculateEntry(entrants = {}) {
     + (guests.senior * data.prices.senior);
 }
 
-console.log(calculateEntry());
-
 module.exports = { calculateEntry, countEntrants };
