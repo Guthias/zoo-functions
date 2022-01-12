@@ -23,16 +23,8 @@ const daySchedule = (weekDay) => {
   return schedule;
 };
 
-function fullSchedule() {
-  const schedule = {};
-  Object.keys(hours).forEach((weekDay) => {
-    schedule[weekDay] = {
-      officeHour: openTime(hours[weekDay].open, hours[weekDay].close),
-      exhibition: exhibition(weekDay) };
-  });
-
-  return schedule;
-}
+const fullSchedule = () => Object.keys(hours).reduce((acc, weekDay) =>
+  Object.assign(acc, daySchedule(weekDay)), {});
 
 function getSchedule(scheduleTarget) {
   const animal = species.find((specie) => specie.name === scheduleTarget);
