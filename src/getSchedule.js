@@ -1,4 +1,3 @@
-const data = require('../data/zoo_data');
 const { hours, species } = require('../data/zoo_data');
 
 const openTime = (open, close) => {
@@ -7,7 +6,7 @@ const openTime = (open, close) => {
 };
 
 const exhibition = (weekDay) => {
-  const exhibitionAnimals = data.species.reduce((acumulator, specie) => {
+  const exhibitionAnimals = species.reduce((acumulator, specie) => {
     if (specie.availability.includes(weekDay)) acumulator.push(specie.name);
     return acumulator;
   }, []);
