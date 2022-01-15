@@ -14,13 +14,10 @@ const exhibition = (weekDay) => {
   return (exhibitionAnimals.length) ? exhibitionAnimals : 'The zoo will be closed!';
 };
 
-const daySchedule = (weekDay) => {
-  const schedule = {};
-  schedule[weekDay] = {
+const daySchedule = (weekDay) => ({
+  [weekDay]: {
     officeHour: openTime(hours[weekDay].open, hours[weekDay].close),
-    exhibition: exhibition(weekDay) };
-  return schedule;
-};
+    exhibition: exhibition(weekDay) } });
 
 const fullSchedule = () => Object.keys(hours).reduce((acc, weekDay) =>
   Object.assign(acc, daySchedule(weekDay)), {});
