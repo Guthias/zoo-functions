@@ -9,7 +9,7 @@ const countAllAnimals = () => species
 function countAnimals(animal) {
   if (!animal) return countAllAnimals();
   const animalFromSpecie = species.find((specie) => specie.name === animal.specie).residents;
-  return Object.prototype.hasOwnProperty.call(animal, 'sex')
+  return ('sex' in animal)
     ? animalFromSpecie.filter((resident) => resident.sex === animal.sex).length
     : animalFromSpecie.length;
 }
