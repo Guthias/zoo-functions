@@ -16,11 +16,11 @@ const getLocation = (specieIDs) => specieIDs.reduce((acc, specieID) => {
   return acc;
 }, []);
 
-const employeeInfo = (worker) => ({
-  id: worker.id,
-  fullName: `${worker.firstName} ${worker.lastName}`,
-  species: getSpecies(worker.responsibleFor),
-  locations: getLocation(worker.responsibleFor) });
+const employeeInfo = ({ id, firstName, lastName, responsibleFor }) => ({
+  id,
+  fullName: `${firstName} ${lastName}`,
+  species: getSpecies(responsibleFor),
+  locations: getLocation(responsibleFor) });
 
 function getEmployeesCoverage(employeID = null) {
   if (!employeID) {
